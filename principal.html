@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Principal</title>
+</head>
+<body>
+    <FORM name="valores">
+        <P>Valor de N <INPUT type="number" name="valorN" onKeyPress="return soloNumeros(event)"></P>
+        <INPUT onclick=calcular() type="button" value="calcular">
+    </FORM>
+    <SCRIPT language="JavaScript">
+        function calcular(){
+            var hilera = parseInt(document.valores.valorN.value,10);
+            genera_tabla(hilera);
+
+        }
+        function genera_tabla(nohileras) {
+
+            var body = document.getElementsByTagName("body")[0];
+
+            var tabla   = document.createElement("table");
+            var tblBody = document.createElement("tbody");
+            var expresion="1"
+            var acum=1;
+            for (var i = 0; i < nohileras; i++) {
+
+                var hilera = document.createElement("tr");
+                expresion+="*"+(i+1);
+                acum=acum*(i+1);
+
+                for (var j = 0; j < 3; j++) {
+
+                    var celda = document.createElement("td");
+                    switch (j){
+                        case 0:
+                            var textoCelda = document.createTextNode(""+j+1);
+                            break;
+                        case 1:
+                            var textoCelda= document.createTextNode(expresion);
+                            break;
+                        case 2:
+                            var textoCelda=document.createTextNode(acum);
+
+                    }
+
+                    celda.appendChild(textoCelda);
+                    hilera.appendChild(celda);
+                }
+
+                tblBody.appendChild(hilera);
+            }
+
+            tabla.appendChild(tblBody);
+            body.appendChild(tabla);
+            tabla.setAttribute("border", "2");
+        }
+        function soloNumeros(e){
+
+            var key = window.Event ? e.which : e.keyCode
+
+            return (key >= 48 && key <= 57)
+
+        }
+    </SCRIPT>
+
+</body>
+</html>

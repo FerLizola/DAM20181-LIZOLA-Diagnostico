@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content.Type" content="text/html" charset="utf-8"/>
+        <title> Login </title>
+    </head>
+    <body>
+        <FORM name=loginForma action="principal.html">
+            <P>Usuario:<INPUT type=text name=login></P>
+            <P>Contraseña: <Input type="password" name="password"></P>
+            <INPUT onclick=loggear() type=button value=Login>
+        </FORM>
+    <SCRIPT language="JavaScript">
+        function loggear(){
+            if(document.loginForma.login.value=='admin' && document.loginForma.password.value=='admin'){
+                document.loginForma.submit();
+            }
+            else
+                alert("Usuario y/o contraseña incorrectos");
+        }
+    </SCRIPT>
